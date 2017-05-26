@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+
+
+
+  <style type="text/css">
+
+  </style>
+
+  <title>Visitors per country</title>
+
+
+</head>
+
+<body>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <div id="regions_div" style="width: 900px; height: 500px;"></div>
+
+
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+      //https://developers.google.com/chart/interactive/docs/gallery/geomap
+      google.charts.load('current', {'packages':['geochart']});
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Visitors'],
+          ["United States",1262188713782],
+          ["United Kingdom",504571025941],
+          ["Netherlands",472073555507],
+          ["Ireland",177022487310],
+          ["Australia",164792847099],
+          ["Canada",96250759478],
+          ["Japan",69455552162],
+          ["Russia",45135757408],
+          ["South Africa",28731916967],
+          ["France",19080011487],
+          ["Finland",6874134031],
+          ["India",3402374540],
+          ["Belgium",1249523104],
+          ["Italy",551278679],
+          ["Hong Kong",498058538],
+          ["Sweden",456031647],
+          ["Germany",296784438],
+          ["New Zealand",233856007],
+          ["Denmark",194580432],
+          ["Singapore",186430050],
+          ["Sri Lanka",131016357],
+          ["Austria",62157144],
+          ["Malaysia",55961835],
+          ["Philippines",28320503],
+          ["Spain",27458156],
+          ["Switzerland",23460585],
+          ["Norway",15582062],
+          ["Poland",5987051],
+          ["Hungary",2157212],
+          ["Thailand",1174898],
+          ["Montenegro",1025272],
+          ["Indonesia",95850],
+          ["China",864],
+          ["Tunisia",718],
+          ["Portugal",162],
+          ["Romania",108],
+          ["Czech Republic",90],
+          ["Brazil",54],
+          ["Bangladesh",54]
+        ]);
+
+        var options = {};
+        //http://www.rapidtables.com/web/color/RGB_Color.htm
+        // silver to red
+        options['colors'] = ["#FFA07A", "#FF0000" ];
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+//]]>
+
+</script>
+
+</body>
+
+</html>
