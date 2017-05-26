@@ -55,29 +55,9 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Country', 'Visitors'],
-          
-            ["United States", 123 ],
-          
-            ["United Kingdom", 223 ],
-          
-            ["Netherlands", 143 ],
-          
-            ["Ireland", 153 ],
-          
-            ["Australia", 23 ],
-          
-            ["Canada", 1235 ],
-          
-            ["Japan", 12 ],
-          
-            ["Russia", 15 ],
-          
-            ["South Africa", 125 ],
-          
-            ["France", 13 ],
-          
-            ["Finland", 13 ],
-          
+          {% for country in countries %}
+            ["{{country[0]}}", {{country[1]}} ],
+          {% endfor %}
         ]);
 
         var options = {};
