@@ -16,6 +16,8 @@ parser.add_argument('-c','--column-name', dest='column_name', default="Cows",
                     help='Name of the CSV column to be used in geomap')
 parser.add_argument('--country-column-name', dest='country_column_name', default="Country Name",
                     help='Column name for the country')
+parser.add_argument('--convert-to-percent', action="store_true", dest='convert_to_percent', default=False,
+                    help='Convert column values to percentage')
 
 args = parser.parse_args()
 
@@ -47,6 +49,23 @@ def create_html(output_filename, countries_score_tuples):
         html = template.render(context)
         f.write(html)
 
+def convert_to_percent_countries(countries_scores_tuple):
+    total_sum = 0
+    percent_converted_tuples = []
+
+    # Find total sum
+    for country, score in countries_scores_tuple:
+        total_sum += score
+
+    #Convert to percentage
+    for country, score in countries_scores_tuple:
+        percent_converted_tuples.append((country, score * 100 / total_sum))
+
+    return percent_converted_tuples
+
+
 countries_scores_tuple = list(get_geodata_from_csv(args.input_csv, args.skiprows, args.column_name, args.country_column_name))
+if args.convert_to_percent:
+    countries_scores_tuple = convert_to_percent_countries(countries_scores_tuple)
 create_html(args.output_path, countries_scores_tuple)
 print "Created web page {} with content {}".format(args.output_path, countries_scores_tuple)
