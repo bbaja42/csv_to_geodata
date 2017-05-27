@@ -59,7 +59,7 @@ def convert_to_percent_countries(countries_scores_tuple):
 
     #Convert to percentage
     for country, score in countries_scores_tuple:
-        percent_converted_tuples.append((country, score * 100 / total_sum))
+        percent_converted_tuples.append((country, round(float(score * 100) / total_sum,5)))
 
     return percent_converted_tuples
 
