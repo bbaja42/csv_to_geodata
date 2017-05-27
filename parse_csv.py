@@ -30,13 +30,13 @@ def get_geodata_from_csv(input_csv, skiprows, column_name, country_column_name):
         ]
     '''
     csv_as_dict =  pd.read_csv(input_csv, skiprows = int(skiprows)).to_dict()
-    for k,v in csv_as_dict[country_column_name].iteritems():
-        try:
+    try:
+        for k,v in csv_as_dict[country_column_name].iteritems():
             yield (v, int(csv_as_dict[column_name][k]))
-        except KeyError:
-            print "Failed to find column {} in csv".format(column_name)
-            print "Possible columns are {}".format(csv_as_dict.keys())
-            exit(1)
+    except KeyError:
+        print "Failed to find column {} in csv".format(column_name)
+        print "Possible columns are {}".format(csv_as_dict.keys())
+        exit(1)
 
 
 def create_html(output_filename, countries_score_tuples):
