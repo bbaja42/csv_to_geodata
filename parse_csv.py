@@ -4,6 +4,7 @@ import pandas as pd
 from jinja2 import Environment, FileSystemLoader
 
 import argparse
+import os
 
 parser = argparse.ArgumentParser(description='Process some csv file')
 parser.add_argument('-i','--input-csv', dest='input_csv', required=True,
@@ -43,7 +44,8 @@ def create_html(output_filename, countries_score_tuples):
     context = dict(
         countries =  countries_score_tuples
     )
-    env = Environment(loader=FileSystemLoader('.'))
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    env = Environment(loader=FileSystemLoader(dir_path))
     template = env.get_template('index.html.tpl')
     with open(output_filename, 'w') as f:
         html = template.render(context)
